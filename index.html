@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Mirna Gomaa - Embedded Finance Consultant</title>
+    <meta name="description" content="MService X Ltd - Building Bridges to Bank the Unbankable. Embedded finance consultancy helping platforms launch financial products across UK & Germany.">
+    <title>MService X Ltd | Embedded Finance Consultancy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
@@ -32,22 +33,129 @@
             color: var(--slate);
             background: var(--bg-cream);
             line-height: 1.7;
-            overflow-x: hidden;
         }
 
-        .container {
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(10, 36, 99, 0.08);
+        }
+
+        .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Hero Section - Elevated Design */
-        .hero {
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--teal), var(--bright-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--slate);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
             position: relative;
-            padding: 8rem 0 6rem;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--teal);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--deep-blue);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .cta-nav::after {
+            display: none;
+        }
+
+        .cta-nav:hover {
+            background: var(--teal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(17, 138, 178, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--deep-blue);
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
             background: linear-gradient(165deg, var(--deep-blue) 0%, var(--forest) 45%, var(--teal) 100%);
             color: white;
             overflow: hidden;
+            padding-top: 80px;
         }
 
         .hero::before {
@@ -70,24 +178,12 @@
             66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to top, var(--bg-cream), transparent);
-        }
-
-        .hero .container {
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
             position: relative;
             z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
             text-align: center;
         }
 
@@ -107,14 +203,8 @@
         }
 
         @keyframes fadeSlideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 {
@@ -128,14 +218,8 @@
         }
 
         @keyframes fadeSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-highlight {
@@ -149,467 +233,208 @@
             font-size: 1.375rem;
             line-height: 1.8;
             opacity: 0.95;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 3rem;
             font-weight: 400;
             animation: fadeSlideUp 0.8s ease 0.6s both;
         }
 
-        .hero-features {
+        .hero-buttons {
             display: flex;
+            gap: 1.5rem;
             justify-content: center;
-            gap: 3rem;
             flex-wrap: wrap;
             animation: fadeSlideUp 0.8s ease 0.8s both;
         }
 
-        .hero-feature {
-            display: flex;
+        .btn-primary {
+            background: var(--bright-teal);
+            color: var(--deep-blue);
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.125rem;
+            display: inline-flex;
             align-items: center;
             gap: 0.75rem;
+            border: 2px solid var(--bright-teal);
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(6, 214, 160, 0.3);
         }
 
-        .hero-feature-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            display: flex;
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            backdrop-filter: blur(10px);
+            gap: 0.75rem;
+            border: 2px solid white;
+            transition: all 0.3s;
         }
 
-        .hero-feature-text {
-            text-align: left;
-        }
-
-        .hero-feature-label {
-            font-size: 0.875rem;
-            opacity: 0.8;
-        }
-
-        .hero-feature-value {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        /* Services Section */
-        .services-section {
-            padding: 6rem 0;
-        }
-
-        .section-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 5rem;
-        }
-
-        .section-intro h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 3rem;
+        .btn-secondary:hover {
+            background: white;
             color: var(--deep-blue);
-            margin-bottom: 1rem;
-            font-weight: 700;
+            transform: translateY(-3px);
         }
 
-        .section-intro p {
-            font-size: 1.25rem;
-            color: var(--slate-light);
+        /* About Preview Section */
+        .about-preview {
+            padding: 6rem 0;
+            background: var(--white);
         }
 
-        /* Service Cards - Elevated Design */
-        .service {
-            margin-bottom: 5rem;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .service:nth-child(even) {
-            direction: rtl;
-        }
-
-        .service:nth-child(even) > * {
-            direction: ltr;
-        }
-
-        .service-content h3 {
+        .about-content h2 {
             font-family: 'Crimson Pro', serif;
-            font-size: 2.75rem;
+            font-size: 3rem;
             color: var(--deep-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
             font-weight: 700;
         }
 
-        .service-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--teal), var(--bright-teal));
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.3px;
-            box-shadow: 0 4px 12px rgba(17, 138, 178, 0.25);
-        }
-
-        .service-description {
+        .about-content p {
             font-size: 1.125rem;
             color: var(--slate-light);
-            margin-bottom: 2rem;
             line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        .service-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .service-features li {
-            padding: 0.875rem 0;
-            padding-left: 2.5rem;
-            position: relative;
-            color: var(--slate);
-            font-size: 1.05rem;
-        }
-
-        .service-features li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 1rem;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, var(--bright-teal), var(--teal));
-            border-radius: 50%;
+        .about-image {
+            background: linear-gradient(135deg, var(--deep-blue), var(--teal));
+            height: 500px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .service-features li::after {
-            content: "✓";
-            position: absolute;
-            left: 5px;
-            top: 0.85rem;
             color: white;
-            font-weight: 700;
-            font-size: 0.875rem;
+            font-size: 4rem;
+            font-family: 'Crimson Pro', serif;
+            box-shadow: 0 20px 60px rgba(10, 36, 99, 0.15);
         }
 
-        .deliverables-box {
-            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .deliverables-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--teal), var(--bright-teal));
-        }
-
-        .deliverables-box h4 {
-            font-weight: 800;
-            color: var(--deep-blue);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .deliverables-box ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .deliverables-box li {
-            padding: 0.625rem 0;
-            color: var(--slate-light);
-            padding-left: 1.75rem;
-            position: relative;
-            font-size: 0.975rem;
-        }
-
-        .deliverables-box li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--teal);
-            font-weight: 700;
-            font-size: 1.125rem;
-        }
-
-        .cta-button {
+        .btn-link {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             background: var(--deep-blue);
             color: white;
-            padding: 1.125rem 2.5rem;
-            border-radius: 12px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid var(--deep-blue);
-            font-size: 1rem;
-            margin-top: 1.5rem;
-            box-shadow: 0 4px 12px rgba(10, 36, 99, 0.15);
+            transition: all 0.3s;
+            margin-top: 1rem;
         }
 
-        .cta-button:hover {
+        .btn-link:hover {
             background: var(--teal);
-            border-color: var(--teal);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(17, 138, 178, 0.3);
         }
 
-        .cta-button::after {
-            content: "→";
-            transition: transform 0.3s;
+        /* Services Preview */
+        .services-preview {
+            padding: 6rem 0;
+            background: var(--bg-light);
         }
 
-        .cta-button:hover::after {
-            transform: translateX(4px);
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
         }
 
-        /* Visual Containers - Enhanced */
-        .service-visual {
+        .section-header h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--slate-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
             background: white;
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(10, 36, 99, 0.08);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            text-align: center;
         }
 
-        .service-visual::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(6, 214, 160, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
+        .service-card:hover {
+            border-color: var(--bright-teal);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(10, 36, 99, 0.1);
         }
 
-        .service-visual > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .visual-icon {
-            width: 85px;
-            height: 85px;
-            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--teal) 100%);
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--deep-blue), var(--teal));
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.75rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 12px 28px rgba(10, 36, 99, 0.2);
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 20px rgba(10, 36, 99, 0.15);
         }
 
-        /* Process Flow */
-        .process-flow {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .process-step {
-            background: var(--bg-light);
-            padding: 1.75rem;
-            border-radius: 16px;
-            border-left: 5px solid var(--bright-teal);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .process-step:hover {
-            transform: translateX(8px);
-            box-shadow: 0 8px 24px rgba(10, 36, 99, 0.08);
-            border-left-color: var(--teal);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -12px;
-            left: 1.5rem;
-            background: linear-gradient(135deg, var(--teal), var(--bright-teal));
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.875rem;
-            box-shadow: 0 4px 12px rgba(17, 138, 178, 0.3);
-        }
-
-        .step-title {
-            font-weight: 700;
-            color: var(--deep-blue);
-            margin-bottom: 0.5rem;
-            margin-top: 0.5rem;
-            font-size: 1.05rem;
-        }
-
-        .step-description {
-            color: var(--slate-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .stat-card {
-            background: var(--bg-light);
-            padding: 2rem 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .stat-card:hover {
-            border-color: var(--bright-teal);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(10, 36, 99, 0.1);
-        }
-
-        .stat-number {
+        .service-card h3 {
             font-family: 'Crimson Pro', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--teal);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .stat-label {
-            color: var(--slate-light);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2.5rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--teal) 0%, var(--bright-teal) 100%);
-            border-radius: 10px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            padding-left: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.75rem;
-            top: 0.5rem;
-            width: 18px;
-            height: 18px;
-            background: var(--bright-teal);
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 0 0 2px var(--teal), 0 4px 12px rgba(6, 214, 160, 0.3);
-        }
-
-        .timeline-title {
-            font-weight: 700;
+            font-size: 1.5rem;
             color: var(--deep-blue);
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
-        .timeline-description {
+        .service-card p {
             color: var(--slate-light);
-            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
-        }
-
-        /* Comparison Table */
-        .comparison-table {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 40% 60%;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.2s;
-        }
-
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-row:hover {
-            background: var(--bg-light);
-        }
-
-        .comparison-cell {
-            padding: 1.375rem 1.5rem;
-        }
-
-        .comparison-cell:first-child {
-            background: var(--bg-light);
-            font-weight: 700;
-            color: var(--deep-blue);
-            border-right: 1px solid var(--border);
-            font-size: 0.95rem;
-        }
-
-        .comparison-cell:last-child {
-            color: var(--slate-light);
-            font-size: 0.95rem;
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(165deg, var(--deep-blue) 0%, var(--teal) 100%);
             padding: 6rem 0;
+            background: linear-gradient(165deg, var(--deep-blue) 0%, var(--teal) 100%);
             text-align: center;
             color: white;
             position: relative;
@@ -649,36 +474,72 @@
             margin-right: auto;
         }
 
-        .cta-primary {
-            background: var(--bright-teal);
-            color: var(--deep-blue);
-            padding: 1.25rem 3rem;
-            border-radius: 12px;
+        /* Footer */
+        .footer {
+            background: var(--slate);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p, .footer a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-weight: 800;
-            font-size: 1.125rem;
-            display: inline-flex;
-            align-items: center;
+            line-height: 1.8;
+        }
+
+        .footer a:hover {
+            color: var(--bright-teal);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
             gap: 0.75rem;
-            border: 2px solid var(--bright-teal);
-            transition: all 0.3s;
-            box-shadow: 0 8px 24px rgba(6, 214, 160, 0.3);
         }
 
-        .cta-primary:hover {
-            background: white;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
-        }
-
-        .contact-info {
-            margin-top: 2.5rem;
-            font-size: 1rem;
-            opacity: 0.9;
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         /* Responsive */
         @media (max-width: 968px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 73px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 2rem;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s;
+                align-items: flex-start;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
             .hero h1 {
                 font-size: 2.75rem;
             }
@@ -687,476 +548,211 @@
                 font-size: 1.125rem;
             }
 
-            .hero-features {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
                 flex-direction: column;
-                gap: 1.5rem;
-                align-items: center;
-            }
-
-            .service {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .service:nth-child(even) {
-                direction: ltr;
-            }
-
-            .service-content h3 {
-                font-size: 2.25rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-intro h2 {
-                font-size: 2.25rem;
-            }
-
-            .cta-section h2 {
-                font-size: 2.25rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                MService<span>X</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-optimized.html">About</a></li>
+                <li><a href="services-optimized.html">Services</a></li>
+                <li><a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="cta-nav">Book a Call</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">Embedded Finance Consulting</div>
+            <h1>Building Bridges to<br><span class="hero-highlight">Bank the Unbankable</span></h1>
+            <p>We help platforms, SaaS companies, and fintechs launch embedded finance products that expand financial access while driving sustainable revenue growth across UK and European markets.</p>
+            
+            <div class="hero-buttons">
+                <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="btn-primary">
+                    Get Started
+                    <span>→</span>
+                </a>
+                <a href="services-optimized.html" class="btn-secondary">
+                    Our Services
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="about-preview">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">Embedded Finance Consulting</div>
-                <h1>Transform Ideas Into <span class="hero-highlight">Revenue Streams</span></h1>
-                <p>Strategic consulting that helps platforms, SaaS companies, and fintechs launch embedded finance products and scale distribution partnerships—with clarity, speed, and zero trial-and-error.</p>
-                
-                <div class="hero-features">
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon">⚡</div>
-                        <div class="hero-feature-text">
-                            <div class="hero-feature-label">Time to Revenue</div>
-                            <div class="hero-feature-value">90 Days</div>
-                        </div>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon">💰</div>
-                        <div class="hero-feature-text">
-                            <div class="hero-feature-label">Lending Expertise</div>
-                            <div class="hero-feature-value">£1B+ Volume</div>
-                        </div>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon">🌍</div>
-                        <div class="hero-feature-text">
-                            <div class="hero-feature-label">Markets</div>
-                            <div class="hero-feature-value">UK & Germany</div>
-                        </div>
-                    </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Making Finance Invisible & Inclusive</h2>
+                    <p>MService X Ltd. is a London-based embedded finance consultancy dedicated to helping companies unlock growth by seamlessly integrating financial services into their products.</p>
+                    <p>We believe the future of finance is invisible—woven into everyday experiences—so that businesses can serve their customers faster, smarter, and more inclusively.</p>
+                    <a href="about-optimized.html" class="btn-link">
+                        Learn More About Us
+                        <span>→</span>
+                    </a>
+                </div>
+                <div class="about-image">
+                    <div>MServiceX</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section">
+    <!-- Services Preview -->
+    <section class="services-preview">
         <div class="container">
-            <div class="section-intro">
-                <h2>Six Ways to Accelerate Growth</h2>
-                <p>Choose the engagement that matches your stage—from strategic planning to full-scale partnership development.</p>
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Strategic consulting that helps you launch embedded finance products and scale distribution partnerships</p>
             </div>
 
-            <!-- Service 1 -->
-            <div class="service">
-                <div class="service-content">
-                    <div class="service-badge">
-                        <span>🤝</span>
-                        Partnership Acceleration
-                    </div>
-                    <h3>Fintech Partnership Facilitation</h3>
-                    <p class="service-description">Leverage my industry network to secure partnerships that would typically take 12+ months in just 3-6 months. I connect you with the right providers and negotiate optimal commercial terms.</p>
-                    
-                    <ul class="service-features">
-                        <li>Provider shortlisting using 20+ evaluation criteria</li>
-                        <li>Commercial negotiation for revenue share and pricing</li>
-                        <li>Technical integration oversight with clear milestones</li>
-                        <li>Regulatory compliance alignment</li>
-                    </ul>
-
-                    <div class="deliverables-box">
-                        <h4>Deliverables</h4>
-                        <ul>
-                            <li>Weighted scorecard of 3-5 shortlisted providers</li>
-                            <li>Negotiated term sheets with commercial comparison</li>
-                            <li>Integration roadmap with milestones</li>
-                            <li>Partnership governance framework</li>
-                        </ul>
-                    </div>
-
-                    <a href="#contact" class="cta-button">Get Started</a>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Partnership Facilitation</h3>
+                    <p>Connect with the right fintech providers and negotiate optimal partnership terms in 3-6 months.</p>
+                    <a href="services-optimized.html" class="btn-link">Learn More →</a>
                 </div>
 
-                <div class="service-visual">
-                    <div class="visual-icon">🤝</div>
-                    <div class="process-flow">
-                        <div class="process-step">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Discovery & Requirements</div>
-                            <div class="step-description">Map your use case, technical constraints, and commercial goals</div>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Provider Evaluation</div>
-                            <div class="step-description">Score and shortlist providers using comprehensive criteria</div>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Commercial Negotiation</div>
-                            <div class="step-description">Secure optimal revenue share and partnership terms</div>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">4</div>
-                            <div class="step-title">Partnership Launch</div>
-                            <div class="step-description">Execute integration with clear governance structure</div>
-                        </div>
-                    </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Integration Support</h3>
+                    <p>End-to-end support for integrating embedded lending, payments, cards, or insurance.</p>
+                    <a href="services-optimized.html" class="btn-link">Learn More →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Alliance Building</h3>
+                    <p>Build a network of distribution partners through curated quarterly events.</p>
+                    <a href="services-optimized.html" class="btn-link">Learn More →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Monetization Strategy</h3>
+                    <p>Develop comprehensive revenue models for your embedded finance products.</p>
+                    <a href="services-optimized.html" class="btn-link">Learn More →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>90-Day Launch</h3>
+                    <p>Complete program from strategy to first revenue in focused 90-day engagement.</p>
+                    <a href="services-optimized.html" class="btn-link">Learn More →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Distribution Strategy</h3>
+                    <p>Scale through distribution channels with partner enablement programs.</p>
+                    <a href="services-optimized.html" class="btn-link">Learn More →</a>
                 </div>
             </div>
-
-            <!-- Service 2 -->
-            <div class="service">
-                <div class="service-content">
-                    <div class="service-badge">
-                        <span>🔧</span>
-                        Technical Implementation
-                    </div>
-                    <h3>Embedded Finance Integration</h3>
-                    <p class="service-description">End-to-end support for integrating embedded lending, payments, cards, or insurance. I work with your teams from technical architecture through go-live.</p>
-                    
-                    <ul class="service-features">
-                        <li>Technical architecture review and API planning</li>
-                        <li>User experience design for embedded flows</li>
-                        <li>Compliance and regulatory mapping</li>
-                        <li>Testing, launch planning, and optimization</li>
-                    </ul>
-
-                    <div class="deliverables-box">
-                        <h4>Deliverables</h4>
-                        <ul>
-                            <li>Integration architecture with API specifications</li>
-                            <li>UX/UI wireframes for financial flows</li>
-                            <li>Compliance checklist and requirements</li>
-                            <li>Launch runbook with rollback procedures</li>
-                            <li>Performance dashboard setup</li>
-                        </ul>
-                    </div>
-
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-
-                <div class="service-visual">
-                    <div class="visual-icon">🔧</div>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-number">3-6</div>
-                            <div class="stat-label">Months to Launch</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">95%</div>
-                            <div class="stat-label">Success Rate</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">40%</div>
-                            <div class="stat-label">Faster Than Average</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Launch Support</div>
-                        </div>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-title">Weeks 1-2: Technical Planning</div>
-                            <div class="timeline-description">Architecture review, API mapping, security audit</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">Weeks 3-8: Development</div>
-                            <div class="timeline-description">Integration build, UX implementation, testing</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">Weeks 9-10: UAT & Compliance</div>
-                            <div class="timeline-description">User testing, regulatory review</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">Week 11-12: Launch</div>
-                            <div class="timeline-description">Controlled rollout, monitoring, optimization</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="service">
-                <div class="service-content">
-                    <div class="service-badge">
-                        <span>🌐</span>
-                        Network Building
-                    </div>
-                    <h3>Alliance Builder Program</h3>
-                    <p class="service-description">Build a network of distribution partners through curated quarterly events. I run "Lunch & Learn" sessions with 8-12 UK/EU distributors, positioning you as the go-to solution.</p>
-                    
-                    <ul class="service-features">
-                        <li>Curated distributor events with qualified prospects</li>
-                        <li>Educational content showcasing your advantages</li>
-                        <li>One-on-one follow-up facilitation</li>
-                        <li>Ongoing relationship management</li>
-                    </ul>
-
-                    <div class="deliverables-box">
-                        <h4>Deliverables</h4>
-                        <ul>
-                            <li>Quarterly Lunch & Learn events (4 per year)</li>
-                            <li>Curated attendee list (8-12 distributors)</li>
-                            <li>Custom presentation materials and scripts</li>
-                            <li>Post-event follow-up and introductions</li>
-                            <li>Monthly partnership pipeline reports</li>
-                        </ul>
-                    </div>
-
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-
-                <div class="service-visual">
-                    <div class="visual-icon">🌐</div>
-                    <div class="comparison-table">
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Event Frequency</div>
-                            <div class="comparison-cell">Quarterly (4x per year)</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Attendees</div>
-                            <div class="comparison-cell">8-12 qualified distributors per event</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Markets</div>
-                            <div class="comparison-cell">UK & Germany</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Conversion</div>
-                            <div class="comparison-cell">2-3 partnerships per year</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Your Commitment</div>
-                            <div class="comparison-cell">2 hours per quarter</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Timeline</div>
-                            <div class="comparison-cell">First partnership in 3-6 months</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="service">
-                <div class="service-content">
-                    <div class="service-badge">
-                        <span>💰</span>
-                        Revenue Modeling
-                    </div>
-                    <h3>Monetization Strategy Blueprint</h3>
-                    <p class="service-description">Develop a comprehensive revenue model for your embedded finance product. I analyze your platform data to design optimal pricing and monetization mechanisms.</p>
-                    
-                    <ul class="service-features">
-                        <li>Platform data analysis for highest-value use cases</li>
-                        <li>Competitive revenue model benchmarking</li>
-                        <li>Pricing architecture design</li>
-                        <li>Financial projections with sensitivity analysis</li>
-                    </ul>
-
-                    <div class="deliverables-box">
-                        <h4>Deliverables</h4>
-                        <ul>
-                            <li>Monetization strategy document (30-40 pages)</li>
-                            <li>Revenue projection model (Excel/Sheets)</li>
-                            <li>Pricing structure recommendations</li>
-                            <li>Competitive positioning analysis</li>
-                            <li>Board-ready presentation deck</li>
-                        </ul>
-                    </div>
-
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-
-                <div class="service-visual">
-                    <div class="visual-icon">💰</div>
-                    <div class="process-flow">
-                        <div class="process-step">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Data Analysis</div>
-                            <div class="step-description">Review 12 months of transaction data, user behavior, and cash flows</div>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Market Benchmarking</div>
-                            <div class="step-description">Analyze competitor pricing and revenue models</div>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Model Development</div>
-                            <div class="step-description">Build 3-5 year projections with scenarios</div>
-                        </div>
-                        <div class="process-step">
-                            <div class="step-number">4</div>
-                            <div class="step-title">Strategy Presentation</div>
-                            <div class="step-description">Present findings with clear recommendations</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="service">
-                <div class="service-content">
-                    <div class="service-badge">
-                        <span>🚀</span>
-                        Complete Launch Program
-                    </div>
-                    <h3>Embedded Finance Entry</h3>
-                    <p class="service-description">The complete 90-day program from strategy to first revenue. Comprehensive engagement covering assessment, partner selection, integration, and launch.</p>
-                    
-                    <ul class="service-features">
-                        <li>Viability assessment and use case identification</li>
-                        <li>Build vs partner decision framework</li>
-                        <li>Provider evaluation and negotiation</li>
-                        <li>Integration planning and execution</li>
-                        <li>First revenue or documented pivot decision</li>
-                    </ul>
-
-                    <div class="deliverables-box">
-                        <h4>Deliverables</h4>
-                        <ul>
-                            <li>90-day roadmap with weekly milestones</li>
-                            <li>Viability assessment report</li>
-                            <li>Selected provider with signed term sheet</li>
-                            <li>Integration architecture and launch plan</li>
-                            <li>First revenue or clear pause/pivot decision</li>
-                        </ul>
-                    </div>
-
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-
-                <div class="service-visual">
-                    <div class="visual-icon">🚀</div>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-title">Days 1-30: Strategy & Assessment</div>
-                            <div class="timeline-description">Use case validation, build vs partner decision, provider shortlisting</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">Days 31-60: Partner Selection</div>
-                            <div class="timeline-description">Provider evaluation, negotiation, contract execution</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">Days 61-75: Integration Build</div>
-                            <div class="timeline-description">Technical implementation, UX development, compliance</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-title">Days 76-90: Launch & Revenue</div>
-                            <div class="timeline-description">Controlled rollout, first transactions, monitoring</div>
-                        </div>
-                    </div>
-                    <div class="stats-grid" style="margin-top: 2rem;">
-                        <div class="stat-card">
-                            <div class="stat-number">90</div>
-                            <div class="stat-label">Days Total</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Decision Clarity</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 6 -->
-            <div class="service">
-                <div class="service-content">
-                    <div class="service-badge">
-                        <span>📊</span>
-                        Distribution Strategy
-                    </div>
-                    <h3>Distributor Monetization Playbook</h3>
-                    <p class="service-description">For fintechs scaling through distribution channels. I help you build, activate, and monetize a network of platform partners who sell your product to their users.</p>
-                    
-                    <ul class="service-features">
-                        <li>Distribution channel strategy and segmentation</li>
-                        <li>Partner enablement program design</li>
-                        <li>Commercial model optimization</li>
-                        <li>Partner pipeline development and management</li>
-                    </ul>
-
-                    <div class="deliverables-box">
-                        <h4>Deliverables</h4>
-                        <ul>
-                            <li>Distribution strategy with partner profiles</li>
-                            <li>Partner enablement toolkit</li>
-                            <li>Revenue share calculator and incentives</li>
-                            <li>Partner pipeline with 10-15 warm introductions</li>
-                            <li>First 3 partnerships activated in 6 months</li>
-                        </ul>
-                    </div>
-
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-
-                <div class="service-visual">
-                    <div class="visual-icon">📊</div>
-                    <div class="comparison-table">
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Partner Types</div>
-                            <div class="comparison-cell">Vertical SaaS, Neo-banks, Payments, Marketplaces</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Pipeline</div>
-                            <div class="comparison-cell">10-15 qualified prospects</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Activation</div>
-                            <div class="comparison-cell">3 partnerships in 6 months</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Revenue Impact</div>
-                            <div class="comparison-cell">20-40% annual growth</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Enablement</div>
-                            <div class="comparison-cell">Pitch decks, API docs, case studies, training</div>
-                        </div>
-                        <div class="comparison-row">
-                            <div class="comparison-cell">Support</div>
-                            <div class="comparison-cell">Quarterly reviews & optimization</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" id="contact">
+    <section class="cta-section">
         <div class="container">
-            <h2>Ready to Launch Your Embedded Finance Product?</h2>
-            <p>Book a 90-minute strategy session to clarify your opportunity and get a custom roadmap for your next 90 days.</p>
-            <a href="mailto:info@mservicesx.com" class="cta-primary">
-                Schedule Strategy Session
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Book a 30-minute consultation to discuss how embedded finance can accelerate your growth.</p>
+            <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="btn-primary">
+                Schedule Your Call
+                <span>→</span>
             </a>
-            <div class="contact-info">
-                Mirna Gomaa | Embedded Finance Consultant<br>
-                info@mservicesx.com | +44 (0) 7770 155786
-            </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>MService X Ltd</h4>
+                    <p>Building Bridges to Bank the Unbankable</p>
+                    <p style="margin-top: 1rem;">Embedded finance consultancy helping platforms and fintechs launch financial products across UK & Germany.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about-optimized.html">About</a>
+                        <a href="services-optimized.html">Services</a>
+                        <a href="https://calendly.com/mirnagomaa10/30min" target="_blank">Book a Call</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <p>30 Churchill Place<br>London E14 5RE</p>
+                        <a href="mailto:info@mservicesx.com">info@mservicesx.com</a>
+                        <a href="tel:+447770155786">+44 (0) 7770 155786</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MService X Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
