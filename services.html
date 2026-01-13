@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | MService X - Strategy & Implementation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--deep-blue:#0A2463;--teal:#118AB2;--bright-teal:#06D6A0;--forest:#05668D;--slate:#1E293B;--slate-light:#64748B;--bg-cream:#FEFCF8;--bg-light:#F8FAFC;--white:#FFFFFF;--border:#E2E8F0}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Manrope',sans-serif;color:var(--slate);background:var(--bg-cream);line-height:1.7}.navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:1000;transition:all 0.3s}.navbar.scrolled{box-shadow:0 4px 20px rgba(10,36,99,0.08)}.nav-container{max-width:1280px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-family:'Crimson Pro',serif;font-size:1.5rem;font-weight:700;color:var(--deep-blue);text-decoration:none;display:flex;align-items:center;gap:0.5rem}.logo-icon{font-size:1.75rem}.logo span{background:linear-gradient(135deg,var(--teal),var(--bright-teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}.nav-menu a{color:var(--slate);text-decoration:none;font-weight:600;font-size:1rem;transition:color 0.3s;position:relative}.nav-menu a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--teal);transition:width 0.3s}.nav-menu a:hover{color:var(--teal)}.nav-menu a:hover::after{width:100%}.cta-nav{background:var(--deep-blue);color:white!important;padding:0.75rem 1.5rem;border-radius:8px;transition:all 0.3s}.cta-nav::after{display:none}.cta-nav:hover{background:var(--teal);transform:translateY(-2px);box-shadow:0 4px 12px rgba(17,138,178,0.3)}.menu-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px}.menu-toggle span{width:25px;height:3px;background:var(--deep-blue);transition:all 0.3s}.container{max-width:1280px;margin:0 auto;padding:0 2rem}.hero{position:relative;padding:8rem 0 6rem;background:linear-gradient(165deg,var(--deep-blue) 0%,var(--forest) 45%,var(--teal) 100%);color:white;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 20% 50%,rgba(6,214,160,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(17,138,178,0.15) 0%,transparent 50%);animation:floatShapes 20s ease-in-out infinite}@keyframes floatShapes{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(0.95)}}.hero .container{position:relative;z-index:2}.hero-content{max-width:900px;margin:0 auto;text-align:center}.hero-badge{display:inline-block;background:rgba(6,214,160,0.2);border:1.5px solid var(--bright-teal);color:var(--bright-teal);padding:0.625rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.875rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:2rem}.hero h1{font-family:'Crimson Pro',serif;font-size:4.5rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-0.02em}.hero p{font-size:1.375rem;line-height:1.8;opacity:0.95;max-width:750px;margin:0 auto;font-weight:400}.services-section{padding:6rem 0}.section-intro{text-align:center;max-width:900px;margin:0 auto 5rem}.section-intro h2{font-family:'Crimson Pro',serif;font-size:3rem;color:var(--deep-blue);margin-bottom:1rem;font-weight:700}.section-intro p{font-size:1.25rem;color:var(--slate-light)}.service{margin-bottom:5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.service:nth-child(even){direction:rtl}.service:nth-child(even)>*{direction:ltr}.service-content h3{font-family:'Crimson Pro',serif;font-size:2.75rem;color:var(--deep-blue);margin-bottom:1rem;line-height:1.2;font-weight:700}.service-badge{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--teal),var(--bright-teal));color:white;padding:0.5rem 1.25rem;border-radius:50px;font-weight:700;font-size:0.875rem;margin-bottom:1.5rem;box-shadow:0 4px 12px rgba(17,138,178,0.25)}.service-description{font-size:1.125rem;color:var(--slate-light);margin-bottom:2rem;line-height:1.8}.deliverables-box{background:linear-gradient(135deg,var(--bg-light) 0%,white 100%);padding:2rem;border-radius:16px;border:2px solid var(--border);position:relative;overflow:hidden}.deliverables-box::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--teal),var(--bright-teal))}.deliverables-box h4{font-weight:800;color:var(--deep-blue);margin-bottom:1rem;font-size:0.95rem;text-transform:uppercase;letter-spacing:1px}.deliverables-box ul{list-style:none;padding:0}.deliverables-box li{padding:0.625rem 0;color:var(--slate-light);padding-left:1.75rem;position:relative;font-size:0.975rem}.deliverables-box li::before{content:"→";position:absolute;left:0;color:var(--teal);font-weight:700;font-size:1.125rem}.service-visual{background:white;border-radius:24px;padding:3rem;box-shadow:0 20px 60px rgba(10,36,99,0.08);border:1px solid var(--border);position:relative;overflow:hidden}.service-visual::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(6,214,160,0.08) 0%,transparent 70%);border-radius:50%}.visual-icon{width:85px;height:85px;background:linear-gradient(135deg,var(--deep-blue) 0%,var(--teal) 100%);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.75rem;margin-bottom:2.5rem;box-shadow:0 12px 28px rgba(10,36,99,0.2)}.client-types{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.client-type{background:var(--bg-light);padding:1.5rem;border-radius:12px;border:2px solid var(--border);transition:all 0.3s}.client-type:hover{border-color:var(--bright-teal);transform:translateY(-4px);box-shadow:0 8px 20px rgba(10,36,99,0.08)}.client-type h4{color:var(--deep-blue);font-weight:700;margin-bottom:0.75rem;font-size:1.125rem}.client-type p{color:var(--slate-light);font-size:0.95rem;line-height:1.6}.client-type ul{list-style:none;padding:0;margin-top:0.75rem}.client-type li{padding:0.375rem 0;color:var(--slate-light);padding-left:1.25rem;position:relative;font-size:0.9rem}.client-type li::before{content:"•";position:absolute;left:0;color:var(--teal);font-weight:700}.cta-section{padding:6rem 0;background:linear-gradient(165deg,var(--deep-blue) 0%,var(--teal) 100%);text-align:center;color:white;position:relative;overflow:hidden}.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 70% 30%,rgba(6,214,160,0.15) 0%,transparent 50%),radial-gradient(circle at 30% 70%,rgba(255,255,255,0.05) 0%,transparent 40%)}.cta-section .container{position:relative;z-index:1}.cta-section h2{font-family:'Crimson Pro',serif;font-size:3rem;margin-bottom:1.5rem;font-weight:700}.cta-section p{font-size:1.25rem;margin-bottom:2.5rem;opacity:0.95;max-width:600px;margin-left:auto;margin-right:auto}.btn-primary{background:var(--bright-teal);color:var(--deep-blue);padding:1.25rem 3rem;border-radius:12px;text-decoration:none;font-weight:800;font-size:1.125rem;display:inline-flex;align-items:center;gap:0.75rem;border:2px solid var(--bright-teal);transition:all 0.3s;box-shadow:0 8px 24px rgba(6,214,160,0.3)}.btn-primary:hover{background:white;transform:translateY(-3px);box-shadow:0 12px 32px rgba(255,255,255,0.4)}.footer{background:var(--slate);color:white;padding:3rem 0 1.5rem}.footer-content{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}.footer h4{font-family:'Crimson Pro',serif;font-size:1.25rem;margin-bottom:1rem}.footer p,.footer a{color:rgba(255,255,255,0.8);text-decoration:none;line-height:1.8}.footer a:hover{color:var(--bright-teal)}.footer-links{display:flex;flex-direction:column;gap:0.75rem}.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6)}@media (max-width:968px){.menu-toggle{display:flex}.nav-menu{position:fixed;top:73px;left:-100%;width:100%;flex-direction:column;background:white;padding:2rem;box-shadow:0 8px 16px rgba(0,0,0,0.1);transition:left 0.3s;align-items:flex-start}.nav-menu.active{left:0}.hero h1{font-size:2.75rem}.hero p{font-size:1.125rem}.service{grid-template-columns:1fr;gap:2.5rem}.service:nth-child(even){direction:ltr}.client-types{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🌉</span>
+                MService<span>X</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="cta-nav">Book a Call</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Our Services</div>
+                <h1>Remove the Hassle<br>Focus on Your Core Business</h1>
+                <p>We handle the complexity of finding and integrating partners so you can focus on what you do best.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <div class="section-intro">
+                <h2>Two Ways We Help</h2>
+                <p>Whether you need strategic guidance or full execution, we connect fintech manufacturers with distributors across banks, SaaS platforms, and marketplaces.</p>
+            </div>
+
+            <!-- Service 1: Strategize -->
+            <div class="service">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <span>📋</span>
+                        Strategy Service
+                    </div>
+                    <h3>Strategize</h3>
+                    <p class="service-description">Advisory service to plan your embedded finance initiative. We help you identify ideal partners, estimate timelines and costs, and create a clear roadmap—so you can make informed decisions before committing resources.</p>
+                    
+                    <div class="deliverables-box">
+                        <h4>What You Get</h4>
+                        <ul>
+                            <li>Project timeline (how long it will take)</li>
+                            <li>Cost structure (what it will cost)</li>
+                            <li>Ideal partner profiles (who to work with)</li>
+                            <li>Partnership roadmap (step-by-step plan)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-visual">
+                    <div class="visual-icon">📋</div>
+                    <div class="client-types">
+                        <div class="client-type">
+                            <h4>For Manufacturers</h4>
+                            <p>Fintech needing distribution</p>
+                            <ul>
+                                <li>Lending fintechs</li>
+                                <li>Payment providers</li>
+                                <li>Insurance tech</li>
+                            </ul>
+                        </div>
+                        <div class="client-type">
+                            <h4>For Distributors</h4>
+                            <p>Platforms needing products</p>
+                            <ul>
+                                <li>Banks</li>
+                                <li>SaaS platforms</li>
+                                <li>Marketplaces</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: Implement -->
+            <div class="service">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <span>🚀</span>
+                        Implementation Service
+                    </div>
+                    <h3>Implement</h3>
+                    <p class="service-description">Full execution service from paper to rollout. We handle everything—partner selection, negotiation, integration, and launch management—removing all the hassle so you can stay focused on your core business.</p>
+                    
+                    <div class="deliverables-box">
+                        <h4>What You Get</h4>
+                        <ul>
+                            <li>Complete project timeline (weekly milestones)</li>
+                            <li>Detailed cost structure (all phases)</li>
+                            <li>Implementation roadmap (technical integration)</li>
+                            <li>Ideal partner profiles (matched & introduced)</li>
+                            <li>Partner integration (from paper to launch)</li>
+                            <li>Launch management (rollout support)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-visual">
+                    <div class="visual-icon">🚀</div>
+                    <div class="client-types">
+                        <div class="client-type">
+                            <h4>For Manufacturers</h4>
+                            <p>We find you distributors</p>
+                            <ul>
+                                <li>Partner identification</li>
+                                <li>Negotiation & contracts</li>
+                                <li>Technical integration</li>
+                                <li>Launch support</li>
+                            </ul>
+                        </div>
+                        <div class="client-type">
+                            <h4>For Distributors</h4>
+                            <p>We find you products</p>
+                            <ul>
+                                <li>Product evaluation</li>
+                                <li>Commercial terms</li>
+                                <li>System integration</li>
+                                <li>Go-live management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Book a consultation to discuss which service is right for your embedded finance initiative.</p>
+            <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="btn-primary">Schedule Your Call <span>→</span></a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>MService X Ltd 🌉</h4>
+                    <p>Building Bridges to Bank the Unbankable</p>
+                    <p style="margin-top:1rem">Embedded finance consultancy connecting fintech manufacturers with distributors across UK & Germany.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="https://calendly.com/mirnagomaa10/30min" target="_blank">Book a Call</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <p><strong>Mirna Gomaa</strong></p>
+                        <p>30 Churchill Place<br>London E14 5RE</p>
+                        <a href="/cdn-cgi/l/email-protection#5a33343c351a37293f282c33393f292274393537"><span class="__cf_email__" data-cfemail="3d54535b527d504e584f4b545e584e45135e5250">[email&#160;protected]</span></a>
+                        <a href="tel:+447770155786">+44 (0) 7770 155786</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MService X Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const menuToggle=document.getElementById('menuToggle');
+        const navMenu=document.getElementById('navMenu');
+        menuToggle.addEventListener('click',()=>navMenu.classList.toggle('active'));
+        window.addEventListener('scroll',()=>{
+            const navbar=document.getElementById('navbar');
+            if(window.scrollY>50){navbar.classList.add('scrolled')}else{navbar.cl
