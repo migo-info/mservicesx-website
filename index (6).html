@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MService X - AI-Augmented PMO for fintech and banking. We eliminate project chaos, automate stakeholder updates, and deliver with clarity across UK & German markets.">
+    <title>MService X | AI-Augmented PMO for Fintech & Banking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--deep-blue:#0A2463;--teal:#118AB2;--bright-teal:#06D6A0;--forest:#05668D;--slate:#1E293B;--slate-light:#64748B;--bg-cream:#FEFCF8;--bg-light:#F8FAFC;--white:#FFFFFF;--border:#E2E8F0}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Manrope',sans-serif;color:var(--slate);background:var(--bg-cream);line-height:1.7}
+
+        /* NAVBAR */
+        .navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:1000;transition:all 0.3s}
+        .navbar.scrolled{box-shadow:0 4px 20px rgba(10,36,99,0.08)}
+        .nav-container{max-width:1280px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-family:'Crimson Pro',serif;font-size:1.5rem;font-weight:700;color:var(--deep-blue);text-decoration:none;display:flex;align-items:center;gap:0.5rem}
+        .logo-icon{font-size:1.75rem}
+        .logo span{background:linear-gradient(135deg,var(--teal),var(--bright-teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+        .nav-menu a{color:var(--slate);text-decoration:none;font-weight:600;font-size:1rem;transition:color 0.3s;position:relative}
+        .nav-menu a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--teal);transition:width 0.3s}
+        .nav-menu a:hover{color:var(--teal)}
+        .nav-menu a:hover::after{width:100%}
+        .cta-nav{background:var(--deep-blue);color:white!important;padding:0.75rem 1.5rem;border-radius:8px;transition:all 0.3s}
+        .cta-nav::after{display:none!important}
+        .cta-nav:hover{background:var(--teal)!important;transform:translateY(-2px);box-shadow:0 4px 12px rgba(17,138,178,0.3)}
+        .menu-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px}
+        .menu-toggle span{width:25px;height:3px;background:var(--deep-blue);transition:all 0.3s}
+        .container{max-width:1280px;margin:0 auto;padding:0 2rem}
+
+        /* HERO */
+        .hero{position:relative;padding:9rem 0 7rem;background:linear-gradient(165deg,var(--deep-blue) 0%,var(--forest) 45%,var(--teal) 100%);color:white;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 20% 50%,rgba(6,214,160,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(17,138,178,0.15) 0%,transparent 50%);animation:floatShapes 20s ease-in-out infinite}
+        @keyframes floatShapes{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(0.95)}}
+        .hero .container{position:relative;z-index:2}
+        .hero-layout{display:grid;grid-template-columns:1.15fr 0.85fr;gap:4rem;align-items:center}
+        .hero-badge{display:inline-block;background:rgba(6,214,160,0.2);border:1.5px solid var(--bright-teal);color:var(--bright-teal);padding:0.625rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.875rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:2rem}
+        .hero h1{font-family:'Crimson Pro',serif;font-size:3.75rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-0.02em}
+        .hero-highlight{background:linear-gradient(to right,var(--bright-teal),#7fffd4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:1.2rem;line-height:1.8;opacity:0.95;margin-bottom:2.5rem;font-weight:400}
+        .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+        .btn-primary{background:var(--bright-teal);color:var(--deep-blue);padding:1.125rem 2.5rem;border-radius:12px;text-decoration:none;font-weight:800;font-size:1.05rem;display:inline-flex;align-items:center;gap:0.75rem;border:2px solid var(--bright-teal);transition:all 0.3s;box-shadow:0 8px 24px rgba(6,214,160,0.3)}
+        .btn-primary:hover{background:white;transform:translateY(-3px);box-shadow:0 12px 32px rgba(255,255,255,0.4)}
+        .btn-ghost{background:transparent;color:white;padding:1.125rem 2.5rem;border-radius:12px;text-decoration:none;font-weight:700;font-size:1.05rem;display:inline-flex;align-items:center;gap:0.75rem;border:2px solid rgba(255,255,255,0.4);transition:all 0.3s}
+        .btn-ghost:hover{border-color:white;background:rgba(255,255,255,0.1)}
+        .hero-photo-wrap{position:relative}
+        .hero-photo-wrap img{width:100%;border-radius:20px;object-fit:cover;aspect-ratio:3/4;object-position:center top;box-shadow:0 24px 60px rgba(0,0,0,0.3);display:block}
+        .hero-photo-badge{position:absolute;bottom:1.5rem;left:-1.5rem;background:white;border-radius:14px;padding:1rem 1.25rem;box-shadow:0 8px 30px rgba(10,36,99,0.2)}
+        .hero-photo-badge strong{display:block;color:var(--deep-blue);font-size:0.95rem;font-weight:700}
+        .hero-photo-badge span{color:var(--slate-light);font-size:0.78rem}
+
+        /* CHAOS STRIP */
+        .chaos-strip{background:var(--bg-light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 0}
+        .section-header{text-align:center;max-width:800px;margin:0 auto 4rem}
+        .section-label{display:inline-block;background:rgba(17,138,178,0.1);color:var(--teal);padding:0.4rem 1.25rem;border-radius:50px;font-weight:700;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem}
+        .section-header h2{font-family:'Crimson Pro',serif;font-size:3rem;color:var(--deep-blue);font-weight:700;margin-bottom:1rem;line-height:1.2}
+        .section-header p{font-size:1.1rem;color:var(--slate-light);line-height:1.7}
+        .chaos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .chaos-card{background:white;border:2px solid var(--border);border-radius:20px;padding:2.25rem;transition:all 0.3s}
+        .chaos-card:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 12px 32px rgba(10,36,99,0.08)}
+        .chaos-card .pictogram{width:48px;height:48px;margin-bottom:1.25rem;color:var(--teal)}
+        .chaos-card h3{font-family:'Crimson Pro',serif;font-size:1.5rem;color:var(--deep-blue);margin-bottom:0.5rem;font-weight:700}
+        .chaos-card p{font-size:0.9rem;color:var(--slate-light);line-height:1.65}
+
+        /* HOW IT WORKS */
+        .how-section{padding:6rem 0}
+        .how-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:3rem}
+        .pillar-card{background:white;border:2px solid var(--border);border-radius:20px;padding:2.5rem;transition:all 0.3s}
+        .pillar-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,36,99,0.08)}
+        .pillar-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--deep-blue),var(--teal));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(10,36,99,0.15);padding:14px;color:white}
+        .pillar-icon svg{width:100%;height:100%}
+        .pillar-card h3{font-family:'Crimson Pro',serif;font-size:1.45rem;color:var(--deep-blue);font-weight:700;margin-bottom:0.6rem}
+        .pillar-card p{font-size:0.9rem;color:var(--slate-light);line-height:1.7}
+        .raci-callout{background:var(--bg-light);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+        .raci-callout-label{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem}
+        .raci-callout-intro{font-size:0.95rem;color:var(--slate-light);line-height:1.7;margin-bottom:2rem}
+        .raci-callout-intro strong{color:var(--slate)}
+        .raci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--border);border-radius:16px;overflow:hidden}
+        .raci-step{padding:2rem;border-right:1px solid var(--border);background:white;transition:background 0.3s}
+        .raci-step:last-child{border-right:none}
+        .raci-step:hover{background:var(--bg-light)}
+        .raci-tag{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:6px;margin-bottom:1.25rem}
+        .tag-ai{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+        .tag-mirna{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+        .tag-sponsor{background:#fff7ed;color:#ea580c;border:1px solid #fed7aa}
+        .raci-role{font-size:0.72rem;color:var(--slate-light);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem}
+        .raci-step h3{font-family:'Crimson Pro',serif;font-size:1.35rem;color:var(--deep-blue);font-weight:700;margin-bottom:0.6rem}
+        .raci-step p{font-size:0.88rem;color:var(--slate-light);line-height:1.65}
+        .raci-arrow{text-align:center;margin-top:1.25rem;font-size:1.25rem;color:var(--bright-teal)}
+
+        /* SERVICES */
+        .services-section{padding:6rem 0;background:var(--bg-light);border-top:1px solid var(--border)}
+        .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+        .service-card{background:white;padding:2.5rem;border-radius:20px;border:2px solid var(--border);transition:all 0.3s}
+        .service-card:hover{border-color:var(--bright-teal);transform:translateY(-5px);box-shadow:0 12px 32px rgba(10,36,99,0.08)}
+        .service-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--deep-blue),var(--teal));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 8px 20px rgba(10,36,99,0.15);padding:14px;color:white}
+        .service-icon svg{width:100%;height:100%}
+        .service-card h3{font-family:'Crimson Pro',serif;font-size:1.65rem;color:var(--deep-blue);margin-bottom:0.75rem;font-weight:700}
+        .service-card p{color:var(--slate-light);line-height:1.7;font-size:0.95rem;margin-bottom:1.5rem}
+        .service-link{color:var(--teal);font-weight:700;text-decoration:none;font-size:0.9rem;display:inline-flex;align-items:center;gap:0.4rem;transition:gap 0.2s}
+        .service-link:hover{gap:0.75rem}
+
+        /* WHO WE SERVE */
+        .who-section{padding:6rem 0}
+        .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+        .who-card{background:white;padding:2.5rem;border-radius:20px;border:2px solid var(--border);transition:all 0.3s}
+        .who-card:hover{border-color:var(--teal);box-shadow:0 10px 28px rgba(10,36,99,0.07)}
+        .who-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--deep-blue),var(--teal));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;box-shadow:0 8px 20px rgba(10,36,99,0.15);padding:12px;color:white}
+        .who-icon svg{width:100%;height:100%}
+        .who-card h3{font-family:'Crimson Pro',serif;font-size:1.65rem;color:var(--deep-blue);margin-bottom:1rem;font-weight:700}
+        .who-card ul{list-style:none}
+        .who-card ul li{font-size:0.9rem;color:var(--slate-light);padding:0.5rem 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.5}
+        .who-card ul li:last-child{border-bottom:none}
+        .who-card ul li::before{content:'✓';color:var(--bright-teal);font-weight:800;flex-shrink:0;margin-top:1px}
+
+        /* ABOUT */
+        .about-section{padding:6rem 0;background:var(--bg-cream)}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+        .about-image-container{position:relative}
+        .about-image-accent{position:absolute;width:200px;height:200px;background:linear-gradient(135deg,var(--teal),var(--bright-teal));border-radius:24px;top:-20px;right:-20px;z-index:-1;opacity:0.2}
+        .about-image-wrapper{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(10,36,99,0.15)}
+        .about-image-wrapper img{width:100%;height:520px;object-fit:cover;object-position:center top;border-radius:24px;display:block}
+        .founder-badge{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--teal),var(--bright-teal));color:white;padding:0.5rem 1.25rem;border-radius:50px;font-weight:700;font-size:0.875rem;margin-bottom:1.5rem;box-shadow:0 4px 12px rgba(17,138,178,0.25)}
+        .about-content h2{font-family:'Crimson Pro',serif;font-size:2.75rem;color:var(--deep-blue);margin-bottom:1.5rem;line-height:1.2;font-weight:700}
+        .about-content p{font-size:1.05rem;color:var(--slate-light);line-height:1.8;margin-bottom:1.25rem}
+        .about-content p strong{color:var(--slate);font-weight:600}
+        .about-values{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+        .about-value{background:var(--bg-light);border:1px solid var(--border);border-radius:12px;padding:1.25rem;border-left:3px solid var(--bright-teal)}
+        .about-value h4{font-size:0.85rem;font-weight:700;color:var(--deep-blue);margin-bottom:0.35rem}
+        .about-value p{font-size:0.82rem;color:var(--slate-light);line-height:1.5;margin:0}
+
+        /* CTA */
+        .cta-section{padding:6rem 0;background:linear-gradient(165deg,var(--deep-blue) 0%,var(--teal) 100%);text-align:center;color:white;position:relative;overflow:hidden}
+        .cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 70% 30%,rgba(6,214,160,0.15) 0%,transparent 50%),radial-gradient(circle at 30% 70%,rgba(255,255,255,0.05) 0%,transparent 40%)}
+        .cta-section .container{position:relative;z-index:1}
+        .cta-section h2{font-family:'Crimson Pro',serif;font-size:3rem;margin-bottom:1.5rem;font-weight:700}
+        .cta-section p{font-size:1.25rem;margin-bottom:2.5rem;opacity:0.95;max-width:600px;margin-left:auto;margin-right:auto}
+
+        /* FOOTER */
+        .footer{background:var(--slate);color:white;padding:3rem 0 1.5rem}
+        .footer-content{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+        .footer h4{font-family:'Crimson Pro',serif;font-size:1.25rem;margin-bottom:1rem}
+        .footer p,.footer a{color:rgba(255,255,255,0.8);text-decoration:none;line-height:1.8}
+        .footer a:hover{color:var(--bright-teal)}
+        .footer-links{display:flex;flex-direction:column;gap:0.75rem}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6)}
+
+        @media(max-width:968px){
+            .menu-toggle{display:flex}
+            .nav-menu{position:fixed;top:73px;left:-100%;width:100%;flex-direction:column;background:white;padding:2rem;box-shadow:0 8px 16px rgba(0,0,0,0.1);transition:left 0.3s;align-items:flex-start}
+            .nav-menu.active{left:0}
+            .hero-layout{grid-template-columns:1fr}
+            .hero-photo-wrap{display:none}
+            .hero h1{font-size:2.75rem}
+            .chaos-grid,.how-pillars,.raci-grid,.services-grid,.who-grid,.about-grid,.about-values{grid-template-columns:1fr}
+            .raci-step{border-right:none;border-bottom:1px solid var(--border)}
+            .raci-step:last-child{border-bottom:none}
+            .footer-content{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🌉</span>
+                MService<span>X</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="cta-nav">Book a Call</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-layout">
+                <div>
+                    <div class="hero-badge">AI-Augmented PMO · Fintech &amp; Banking</div>
+                    <h1>Project Chaos Eliminated. <span class="hero-highlight">Status Reports Automated.</span> Delivery Assured.</h1>
+                    <p>MService X brings AI-powered project governance to fintech and banking implementations — automated status reports, real-time stakeholder updates, and crystal-clear accountability built in from day one. Less noise, faster delivery, zero chaos.</p>
+                    <div class="hero-actions">
+                        <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="btn-primary">Book a Call →</a>
+                        <a href="services.html" class="btn-ghost">Our Services →</a>
+                    </div>
+                </div>
+                <div class="hero-photo-wrap">
+                    <img src="photo.jpg" alt="Mirna Gomaa – Founder, MService X">
+                    <div class="hero-photo-badge">
+                        <strong>Mirna Gomaa</strong>
+                        <span>Founder &amp; CEO, MService X Ltd · London</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="chaos-strip">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The Problem</span>
+                <h2>Recognise any of these?</h2>
+                <p>Most pain in banking and fintech projects is not complexity — it is chaos that remains unmanaged.</p>
+            </div>
+            <div class="chaos-grid">
+                <div class="chaos-card">
+                    <svg class="pictogram" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="24" cy="24" r="20"/><path d="M24 14v10l6 6"/><path d="M8 24h4M36 24h4M24 8v4M24 36v4"/>
+                    </svg>
+                    <h3>Stakeholders Left Uninformed</h3>
+                    <p>Project sponsors request updates, teams scramble to compile information — and by the time the report is distributed it is already outdated and stakeholder confidence has eroded.</p>
+                </div>
+                <div class="chaos-card">
+                    <svg class="pictogram" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="8" y="8" width="32" height="32" rx="4"/><path d="M16 24h16M24 16v16"/>
+                        <path d="M8 16h4M36 16h4M8 32h4M36 32h4" stroke-width="1.5"/>
+                    </svg>
+                    <h3>Scope Creep, Silently Spreading</h3>
+                    <p>Requests land informally, get actioned without governance, and the budget bleeds. The impact is invisible until the timeline has already slipped by weeks.</p>
+                </div>
+                <div class="chaos-card">
+                    <svg class="pictogram" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="24" cy="16" r="6"/><circle cx="10" cy="36" r="5"/><circle cx="38" cy="36" r="5"/>
+                        <path d="M18 21l-5 10M30 21l5 10M19 36h10"/>
+                    </svg>
+                    <h3>Accountability Without Ownership</h3>
+                    <p>Decisions stall. Escalations reach the wrong person. Accountability is assumed rather than assigned — until something breaks and the root cause becomes difficult to trace.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How It Works</span>
+                <h2>AI-augmented governance,<br>validated by expertise.</h2>
+                <p>MService X combines AI tooling with seasoned project governance experience. Reporting is generated automatically, quality-checked by a certified consultant, and distributed through the correct accountable channels — at every stage of delivery.</p>
+            </div>
+            <div class="how-pillars">
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="10" width="36" height="28" rx="4"/>
+                            <path d="M14 20h20M14 26h14M14 32h8"/>
+                            <circle cx="36" cy="34" r="6" fill="var(--bg-light)" stroke="var(--bright-teal)" stroke-width="2"/>
+                            <path d="M33 34l2 2 4-4" stroke="var(--bright-teal)"/>
+                        </svg>
+                    </div>
+                    <h3>Automated Status Reporting</h3>
+                    <p>AI tools continuously monitor project data and generate structured status reports — covering milestones, risks, budget variance, and open actions — without manual compilation by the project team.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="24" cy="20" r="8"/>
+                            <path d="M10 40c0-7.7 6.3-14 14-14s14 6.3 14 14"/>
+                            <path d="M32 16l3-3M35 13l4-1-1 4"/>
+                        </svg>
+                    </div>
+                    <h3>Expert Validation &amp; Governance</h3>
+                    <p>Every AI-generated output is reviewed and validated by an experienced PMO consultant before distribution. Gaps are identified, risks are escalated, and accuracy is assured — so the project sponsor acts on reliable information.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="24" cy="12" r="5"/>
+                            <circle cx="10" cy="38" r="5"/>
+                            <circle cx="38" cy="38" r="5"/>
+                            <path d="M21 17l-8 16M27 17l8 16M15 38h18"/>
+                        </svg>
+                    </div>
+                    <h3>Structured Stakeholder Distribution</h3>
+                    <p>Validated updates are routed through defined accountable channels. The right stakeholders receive the right information at the right time — maintaining trust, enabling decisions, and keeping momentum on track.</p>
+                </div>
+            </div>
+            <div class="raci-callout">
+                <div class="raci-callout-label">Governance in practice — a worked example</div>
+                <p class="raci-callout-intro">The workflow above maps directly to a standard RACI framework. In a typical engagement, AI tooling holds the <strong>Responsible</strong> role for report generation, the MService X consultant is <strong>Accountable</strong> for quality and accuracy, and the project sponsor <strong>Distributes</strong> the output to relevant stakeholders — ensuring clear ownership at every step.</p>
+                <div class="raci-grid">
+                    <div class="raci-step">
+                        <span class="raci-tag tag-ai">Responsible</span>
+                        <div class="raci-role">AI Tooling</div>
+                        <h3>Tracks &amp; Drafts</h3>
+                        <p>AI tools monitor project data and automatically generate status reports, risk flags, and stakeholder summaries — ready for expert review.</p>
+                        <div class="raci-arrow">→</div>
+                    </div>
+                    <div class="raci-step">
+                        <span class="raci-tag tag-mirna">Accountable</span>
+                        <div class="raci-role">MService X Consultant</div>
+                        <h3>Validates &amp; Governs</h3>
+                        <p>Each report is reviewed before distribution. Project governance expertise is applied — gaps identified, risks flagged, accuracy confirmed — so only verified outputs are shared.</p>
+                        <div class="raci-arrow">→</div>
+                    </div>
+                    <div class="raci-step">
+                        <span class="raci-tag tag-sponsor">Distributes</span>
+                        <div class="raci-role">Project Sponsor</div>
+                        <h3>Communicates &amp; Decides</h3>
+                        <p>The accountable sponsor receives polished, validated updates and distributes them to the appropriate stakeholders — with full confidence in accuracy and timeliness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Services</span>
+                <h2>Four Ways We Eliminate Chaos</h2>
+                <p>From ongoing PMO governance to full implementation delivery — AI-augmented structure for your most complex financial services projects.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="5" width="30" height="26" rx="3"/>
+                            <path d="M9 13h18M9 19h12M9 25h8"/>
+                            <circle cx="27" cy="25" r="5" fill="rgba(255,255,255,0.15)" stroke="white"/>
+                            <path d="M25 25l1.5 1.5 3-3"/>
+                        </svg>
+                    </div>
+                    <h3>AI-Augmented PMO</h3>
+                    <p>Ongoing project governance powered by AI tracking and reporting tools. Status reports are generated automatically, stakeholder communications are managed proactively, and risks are monitored continuously — with expert validation on every output before distribution.</p>
+                    <a href="services.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 3l3 6 6 1-4.5 4.5 1 6.5L18 18l-5.5 3 1-6.5L9 10l6-1z"/>
+                            <path d="M6 28h24M10 33h16"/>
+                        </svg>
+                    </div>
+                    <h3>Implementation Management</h3>
+                    <p>Full execution from paper to go-live. Timeline, budget, regulatory requirements, and vendor coordination are managed end-to-end — AI tools maintain full project visibility throughout, so the core team remains focused on delivery.</p>
+                    <a href="services.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="28" height="28" rx="3"/>
+                            <path d="M4 12h28"/>
+                            <circle cx="10" cy="8" r="1.5" fill="white" stroke="none"/>
+                            <circle cx="16" cy="8" r="1.5" fill="white" stroke="none"/>
+                            <path d="M10 19h6M10 25h10M20 19h6"/>
+                        </svg>
+                    </div>
+                    <h3>Project Governance Advisory</h3>
+                    <p>Strategic governance design before execution begins. The framework, accountability structure, stakeholder communication plan, and reporting cadence are defined upfront — giving the entire team clarity and ownership from day one.</p>
+                    <a href="services.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="18" r="14"/>
+                            <path d="M18 10v8l5 3"/>
+                            <path d="M10 6l2 2M26 6l-2 2M6 18h2M28 18h2"/>
+                        </svg>
+                    </div>
+                    <h3>AI Delivery Governance</h3>
+                    <p>Governance oversight for organisations using AI in their delivery operations. Controls, documentation, and accountability frameworks are put in place to ensure AI tooling is used responsibly — with board-level visibility and consistent standards across teams.</p>
+                    <a href="services.html" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="who-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Who We Serve</span>
+                <h2>Built for Fintech, Banking<br>and Private Equity</h2>
+                <p>We work with organisations where the stakes are high, timelines are tight, and the cost of project chaos is real.</p>
+            </div>
+            <div class="who-grid">
+                <div class="who-card">
+                    <div class="who-icon">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="8" width="26" height="18" rx="2"/>
+                            <path d="M3 14h26M10 8V6a2 2 0 014 0v2M18 8V6a2 2 0 014 0v2"/>
+                            <path d="M9 20h6M9 25h4M19 20h4"/>
+                        </svg>
+                    </div>
+                    <h3>Banks &amp; Financial Institutions</h3>
+                    <ul>
+                        <li>Core banking implementations &amp; migrations</li>
+                        <li>BaaS platform rollouts with multiple vendors</li>
+                        <li>Regulatory change programmes (FCA / BaFin)</li>
+                        <li>Fintech partnership onboarding governance</li>
+                        <li>Executive reporting &amp; board-level stakeholder management</li>
+                    </ul>
+                </div>
+                <div class="who-card">
+                    <div class="who-icon">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4l4 8 9 1.5-6.5 6.5 1.5 9L16 25l-8 4 1.5-9L3 13.5 12 12z"/>
+                        </svg>
+                    </div>
+                    <h3>Fintech Companies</h3>
+                    <ul>
+                        <li>Embedded finance product launches</li>
+                        <li>UK &amp; German market entry projects</li>
+                        <li>Platform &amp; distributor integration governance</li>
+                        <li>Investor &amp; sponsor stakeholder communications</li>
+                        <li>Cross-functional delivery management</li>
+                    </ul>
+                </div>
+                <div class="who-card">
+                    <div class="who-icon">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 26V14l10-8 10 8v12"/>
+                            <path d="M12 26v-7h8v7"/>
+                            <path d="M2 26h28"/>
+                            <circle cx="16" cy="10" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>Private Equity &amp; Portfolio Companies</h3>
+                    <ul>
+                        <li>AI delivery governance across portfolio companies</li>
+                        <li>Consistent reporting frameworks without adding headcount</li>
+                        <li>AI tooling controls, documentation &amp; oversight</li>
+                        <li>Data &amp; AI programme management</li>
+                        <li>Board-level visibility on technology delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-container">
+                    <div class="about-image-accent"></div>
+                    <div class="about-image-wrapper">
+                        <img src="photo.jpg" alt="Mirna Gomaa – Founder, MService X">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="founder-badge">Meet the Founder</div>
+                    <h2>Built by someone who hates project chaos as much as you do.</h2>
+                    <p>MService X was founded by <strong>Mirna Gomaa</strong> — a London-based project governance specialist with over seven years of experience inside fintech environments and B2B banking firms across the UK and Germany.</p>
+                    <p>Having managed strategic partnerships across multiple European markets and delivered consulting engagements for major financial institutions in Germany, Mirna has seen first-hand how quickly complex financial services projects descend into chaos when governance breaks down.</p>
+                    <p>MService X exists because <strong>chaos is expensive</strong>. Missed stakeholder updates erode trust. Scope creep drains budgets. Unclear ownership stalls decisions. The firm was built on a single conviction: that with the right AI tooling and expert governance, none of that needs to happen.</p>
+                    <p>The approach is deliberately resourceful — protecting the time, budget, and energy of every stakeholder involved, and ensuring that project delivery is clean, clear, and confident from day one.</p>
+                    <div class="about-values">
+                        <div class="about-value">
+                            <h4>Zero tolerance for mess</h4>
+                            <p>Clarity and structure are non-negotiable at every stage of delivery.</p>
+                        </div>
+                        <div class="about-value">
+                            <h4>Resourceful by design</h4>
+                            <p>Stakeholder time, client budget, and team energy are treated as precious — never wasted.</p>
+                        </div>
+                        <div class="about-value">
+                            <h4>AI-powered, human-led</h4>
+                            <p>Technology handles the repetitive. Expertise handles the judgement calls.</p>
+                        </div>
+                        <div class="about-value">
+                            <h4>Cross-border expertise</h4>
+                            <p>Deep fluency in UK (FCA) and German (BaFin) regulated environments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Eliminate the Chaos?</h2>
+            <p>Book a free 30-minute discovery call. Together, the areas where project governance is breaking down will be identified and a clear path forward outlined.</p>
+            <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="btn-primary">Schedule a Conversation →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>MService X Ltd</h4>
+                    <p>AI-Augmented PMO for fintech and banking.</p>
+                    <p style="margin-top:1rem">Project chaos eliminated. Stakeholder updates automated. Delivery assured across UK &amp; German markets.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="https://calendly.com/mirnagomaa10/30min" target="_blank">Book a Call</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <p><strong>Mirna Gomaa</strong></p>
+                        <p>30 Churchill Place<br>London E14 5RE</p>
+                        <a href="/cdn-cgi/l/email-protection#b7ded9d1d8f7dac4d2c5c1ded4d2c4cf99d4d8da"><span class="__cf_email__" data-cfemail="cea7a0a8a18ea3bdabbcb8a7adabbdb6e0ada1a3">[email&#160;protected]</span></a>
+                        <a href="tel:+447770155786">+44 (0) 7770 155786</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MService X Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const menuToggle=document.getElementById('menuToggle');
+        const navMenu=document.getElementById('navMenu');
+        menuToggle.addEventListener('click',()=>navMenu.classList.toggle('active'));
+        window.addEventListener('scroll',()=>{
+            const navbar=document.getElementById('navbar');
+            if(window.scrollY>50){navbar.classList.add('scrolled')}else{navbar.cl
