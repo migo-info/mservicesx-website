@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MService X Services — AI-Augmented Delivery Governance, Programme Management, and AI Oversight for Fintech, Banking & PE.">
+    <title>Services | MService X — AI-Augmented Delivery Governance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--deep-blue:#0A2463;--teal:#118AB2;--bright-teal:#06D6A0;--forest:#05668D;--slate:#1E293B;--slate-light:#64748B;--bg-cream:#FEFCF8;--bg-light:#F8FAFC;--white:#FFFFFF;--border:#E2E8F0}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Manrope',sans-serif;color:var(--slate);background:var(--bg-cream);line-height:1.7}
+
+        /* NAVBAR */
+        .navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:1000;transition:all 0.3s}
+        .navbar.scrolled{box-shadow:0 4px 20px rgba(10,36,99,0.08)}
+        .nav-container{max-width:1280px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-family:'Crimson Pro',serif;font-size:1.5rem;font-weight:700;color:var(--deep-blue);text-decoration:none;display:flex;align-items:center;gap:0.5rem}
+        .logo-icon{font-size:1.75rem}
+        .logo span{background:linear-gradient(135deg,var(--teal),var(--bright-teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .nav-menu{display:flex;gap:2.5rem;list-style:none;align-items:center}
+        .nav-menu a{color:var(--slate);text-decoration:none;font-weight:600;font-size:1rem;transition:color 0.3s;position:relative}
+        .nav-menu a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--teal);transition:width 0.3s}
+        .nav-menu a:hover{color:var(--teal)}
+        .nav-menu a:hover::after{width:100%}
+        .cta-nav{background:var(--deep-blue);color:white!important;padding:0.75rem 1.5rem;border-radius:8px;transition:all 0.3s}
+        .cta-nav::after{display:none!important}
+        .cta-nav:hover{background:var(--teal)!important;transform:translateY(-2px);box-shadow:0 4px 12px rgba(17,138,178,0.3)}
+        .menu-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px}
+        .menu-toggle span{width:25px;height:3px;background:var(--deep-blue);transition:all 0.3s}
+        .container{max-width:1280px;margin:0 auto;padding:0 2rem}
+
+        /* HERO */
+        .hero{position:relative;padding:8rem 0 6rem;background:linear-gradient(165deg,var(--deep-blue) 0%,var(--forest) 45%,var(--teal) 100%);color:white;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 20% 50%,rgba(6,214,160,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(17,138,178,0.15) 0%,transparent 50%);animation:floatShapes 20s ease-in-out infinite}
+        @keyframes floatShapes{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(0.95)}}
+        .hero .container{position:relative;z-index:2}
+        .hero-content{max-width:900px;margin:0 auto;text-align:center}
+        .hero-badge{display:inline-block;background:rgba(6,214,160,0.2);border:1.5px solid var(--bright-teal);color:var(--bright-teal);padding:0.625rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.875rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:2rem}
+        .hero h1{font-family:'Crimson Pro',serif;font-size:4rem;font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-0.02em}
+        .hero-highlight{background:linear-gradient(to right,var(--bright-teal),#7fffd4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:1.25rem;line-height:1.8;opacity:0.95;max-width:750px;margin:0 auto}
+
+        /* SHARED */
+        .section-label{display:inline-block;background:rgba(17,138,178,0.1);color:var(--teal);padding:0.4rem 1.25rem;border-radius:50px;font-weight:700;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem}
+
+        /* SERVICE DETAIL */
+        .service-detail{padding:6rem 0;border-bottom:1px solid var(--border)}
+        .service-detail.alt{background:var(--bg-light)}
+        .service-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+        .service-detail-grid.reverse{direction:rtl}
+        .service-detail-grid.reverse > *{direction:ltr}
+        .service-icon-large{width:80px;height:80px;background:linear-gradient(135deg,var(--deep-blue),var(--teal));border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;padding:18px;color:white;box-shadow:0 10px 30px rgba(10,36,99,0.2)}
+        .service-icon-large svg{width:100%;height:100%}
+        .service-header h2{font-family:'Crimson Pro',serif;font-size:2.5rem;color:var(--deep-blue);font-weight:700;line-height:1.2;margin-bottom:1rem}
+        .service-header p{font-size:1.05rem;color:var(--slate-light);line-height:1.8;margin-bottom:1.25rem}
+        .service-header p strong{color:var(--slate)}
+        .service-cta{display:inline-flex;align-items:center;gap:0.6rem;background:var(--deep-blue);color:white;padding:0.9rem 2rem;border-radius:10px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.3s;margin-top:0.5rem}
+        .service-cta:hover{background:var(--teal);transform:translateY(-2px);box-shadow:0 6px 18px rgba(17,138,178,0.3)}
+        .deliverables-card{background:white;border:2px solid var(--border);border-radius:20px;padding:2.5rem}
+        .deliverables-card h3{font-family:'Crimson Pro',serif;font-size:1.4rem;color:var(--deep-blue);font-weight:700;margin-bottom:1.5rem}
+        .deliverable-list{list-style:none;display:flex;flex-direction:column;gap:0.85rem}
+        .deliverable-list li{display:flex;align-items:flex-start;gap:0.85rem;font-size:0.9rem;color:var(--slate);line-height:1.55}
+        .deliverable-list li .check{width:22px;height:22px;background:linear-gradient(135deg,var(--teal),var(--bright-teal));border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+        .deliverable-list li .check svg{width:12px;height:12px;stroke:white;stroke-width:2.5}
+        .suitable-for{background:var(--bg-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem}
+        .suitable-for h4{font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem}
+        .suitable-for p{font-size:0.88rem;color:var(--slate-light);line-height:1.6}
+
+        /* COMPARISON TABLE */
+        .comparison-section{padding:6rem 0;background:var(--bg-light);border-top:1px solid var(--border)}
+        .comparison-header{text-align:center;max-width:800px;margin:0 auto 4rem}
+        .comparison-header h2{font-family:'Crimson Pro',serif;font-size:2.75rem;color:var(--deep-blue);font-weight:700;margin-bottom:1rem}
+        .comparison-header p{font-size:1.1rem;color:var(--slate-light)}
+        .comparison-table{width:100%;border-collapse:collapse;background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(10,36,99,0.06);border:1px solid var(--border)}
+        .comparison-table th{background:var(--deep-blue);color:white;padding:1.25rem 1.5rem;text-align:left;font-size:0.88rem;font-weight:700;letter-spacing:0.04em}
+        .comparison-table td{padding:1.1rem 1.5rem;font-size:0.88rem;color:var(--slate);border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.55}
+        .comparison-table tr:last-child td{border-bottom:none}
+        .comparison-table tr:nth-child(even) td{background:var(--bg-light)}
+        .comparison-table td:first-child{font-weight:600;color:var(--deep-blue)}
+        .tick{color:var(--bright-teal);font-weight:800;font-size:1.1rem}
+        .dash{color:var(--slate-light)}
+
+        /* CTA */
+        .cta-section{padding:6rem 0;background:linear-gradient(165deg,var(--deep-blue) 0%,var(--teal) 100%);text-align:center;color:white;position:relative;overflow:hidden}
+        .cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle at 70% 30%,rgba(6,214,160,0.15) 0%,transparent 50%),radial-gradient(circle at 30% 70%,rgba(255,255,255,0.05) 0%,transparent 40%)}
+        .cta-section .container{position:relative;z-index:1}
+        .cta-section h2{font-family:'Crimson Pro',serif;font-size:3rem;margin-bottom:1.5rem;font-weight:700}
+        .cta-section p{font-size:1.25rem;margin-bottom:2.5rem;opacity:0.95;max-width:600px;margin-left:auto;margin-right:auto}
+        .btn-primary{background:var(--bright-teal);color:var(--deep-blue);padding:1.25rem 3rem;border-radius:12px;text-decoration:none;font-weight:800;font-size:1.125rem;display:inline-flex;align-items:center;gap:0.75rem;border:2px solid var(--bright-teal);transition:all 0.3s;box-shadow:0 8px 24px rgba(6,214,160,0.3)}
+        .btn-primary:hover{background:white;transform:translateY(-3px);box-shadow:0 12px 32px rgba(255,255,255,0.4)}
+
+        /* FOOTER */
+        .footer{background:var(--slate);color:white;padding:3rem 0 1.5rem}
+        .footer-content{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+        .footer h4{font-family:'Crimson Pro',serif;font-size:1.25rem;margin-bottom:1rem}
+        .footer p,.footer a{color:rgba(255,255,255,0.8);text-decoration:none;line-height:1.8}
+        .footer a:hover{color:var(--bright-teal)}
+        .footer-links{display:flex;flex-direction:column;gap:0.75rem}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6)}
+
+        @media(max-width:968px){
+            .menu-toggle{display:flex}
+            .nav-menu{position:fixed;top:73px;left:-100%;width:100%;flex-direction:column;background:white;padding:2rem;box-shadow:0 8px 16px rgba(0,0,0,0.1);transition:left 0.3s;align-items:flex-start}
+            .nav-menu.active{left:0}
+            .hero h1{font-size:2.5rem}
+            .service-detail-grid,.service-detail-grid.reverse{grid-template-columns:1fr;direction:ltr}
+            .footer-content{grid-template-columns:1fr}
+            .comparison-table{font-size:0.8rem}
+            .comparison-table th,.comparison-table td{padding:0.85rem 1rem}
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🌉</span>
+                MService<span>X</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="cta-nav">Book a Call</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Services</div>
+                <h1>AI-Augmented Governance <span class="hero-highlight">for Every Stage of Delivery.</span></h1>
+                <p>Four complementary services — from strategic governance design through to full implementation management and AI delivery oversight — all powered by AI tooling and validated by expert oversight.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 1: AI-Augmented PMO -->
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-detail-grid">
+                <div class="service-header">
+                    <div class="service-icon-large">
+                        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="6" width="36" height="30" rx="4"/>
+                            <path d="M4 16h36M12 26h12M12 32h8"/>
+                            <circle cx="34" cy="30" r="7" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1.5"/>
+                            <path d="M31 30l2 2 4-4" stroke="white" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <span class="section-label">Service 01</span>
+                    <h2>AI-Augmented Delivery Governance</h2>
+                    <p>Ongoing programme governance powered by AI tracking and reporting tools. Status reports are generated automatically, stakeholder communications are managed proactively, and risks are monitored continuously — with <strong>expert validation on every output before distribution.</strong></p>
+                    <p>Designed for organisations that need structured, reliable programme oversight without the overhead of a full in-house function. AI handles the data gathering and drafting; experienced delivery governance expertise handles the accuracy, context, and sign-off.</p>
+                    <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="service-cta">Discuss This Service →</a>
+                </div>
+                <div>
+                    <div class="deliverables-card">
+                        <h3>What is included</h3>
+                        <ul class="deliverable-list">
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>AI-generated weekly status reports, validated and approved before distribution</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Automated risk register updates with escalation flags</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Milestone tracking with variance analysis and recovery recommendations</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Stakeholder communication management — right message, right person, right time</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Scope change governance — all requests logged, assessed, and approved formally</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Budget tracking and forecast reporting</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Monthly governance review with project sponsor</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Action log management and accountability tracking</li>
+                        </ul>
+                    </div>
+                    <div class="suitable-for">
+                        <h4>Best suited for</h4>
+                        <p>Fintech and banking organisations with live programmes that lack dedicated governance oversight — or where the current delivery function is under-resourced and stakeholder confidence is eroding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 2: Implementation Management -->
+    <section class="service-detail alt">
+        <div class="container">
+            <div class="service-detail-grid reverse">
+                <div class="service-header">
+                    <div class="service-icon-large">
+                        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 4l5 10 11 2-8 8 2 11-10-5.5L12 35l2-11L6 16l11-2z"/>
+                            <path d="M8 38h28M13 43h18"/>
+                        </svg>
+                    </div>
+                    <span class="section-label">Service 02</span>
+                    <h2>Implementation Management</h2>
+                    <p>Full end-to-end project delivery from initiation through to go-live. Timeline, budget, regulatory requirements, vendor coordination, and stakeholder management are handled across the entire implementation lifecycle — <strong>using AI tooling to maintain full visibility at every stage.</strong></p>
+                    <p>Designed for organisations launching new products, integrating platforms, or executing regulatory change programmes where the stakes are high and internal capacity is stretched.</p>
+                    <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="service-cta">Discuss This Service →</a>
+                </div>
+                <div>
+                    <div class="deliverables-card">
+                        <h3>What is included</h3>
+                        <ul class="deliverable-list">
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full project initiation — scope definition, RACI, governance framework, and success criteria</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Detailed project plan with milestones, dependencies, and resource requirements</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Vendor and third-party coordination — onboarding, SLAs, and performance tracking</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Regulatory compliance tracking (FCA / BaFin requirements integrated into delivery plan)</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>AI-generated progress reporting with expert sign-off throughout</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Issues and risk management — identification, escalation, and resolution tracking</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Go-live readiness assessment and launch governance</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Post-implementation review and handover documentation</li>
+                        </ul>
+                    </div>
+                    <div class="suitable-for">
+                        <h4>Best suited for</h4>
+                        <p>Banks and fintechs executing complex implementations — core banking migrations, embedded finance product launches, BaaS integrations, or regulatory change programmes — where experienced delivery leadership is required from day one.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 3: Governance Advisory -->
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-detail-grid">
+                <div class="service-header">
+                    <div class="service-icon-large">
+                        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="5" width="34" height="34" rx="4"/>
+                            <path d="M5 17h34M17 5v34"/>
+                            <path d="M25 25h8M25 31h6"/>
+                            <circle cx="11" cy="27" r="3"/>
+                        </svg>
+                    </div>
+                    <span class="section-label">Service 03</span>
+                    <h2>Project Governance Advisory</h2>
+                    <p>Strategic governance design before execution begins. The accountability framework, stakeholder communication structure, reporting cadence, and tooling setup are defined and documented upfront — <strong>giving every team member clarity on ownership before a single task is actioned.</strong></p>
+                    <p>Particularly valuable for organisations that have experienced project failures or delays attributed to unclear governance, and for new programmes where getting the structure right from the outset is a priority.</p>
+                    <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="service-cta">Discuss This Service →</a>
+                </div>
+                <div>
+                    <div class="deliverables-card">
+                        <h3>What is included</h3>
+                        <ul class="deliverable-list">
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Current-state governance assessment — identifying gaps, risks, and structural weaknesses</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>RACI matrix design — clear accountability mapped across all workstreams and stakeholders</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Stakeholder communication plan — format, frequency, and distribution channels defined</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Reporting framework — templates, cadence, and approval workflows</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>AI tooling recommendations and setup guidance for automated reporting</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Scope management process — change request governance and approval workflow</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Governance playbook — a practical reference document for the entire delivery team</li>
+                        </ul>
+                    </div>
+                    <div class="suitable-for">
+                        <h4>Best suited for</h4>
+                        <p>Organisations preparing to launch a significant programme who want governance designed correctly from the outset — or those mid-project where a lack of structure is beginning to affect delivery confidence and stakeholder trust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE 4: AI Delivery Governance -->
+    <section class="service-detail alt">
+        <div class="container">
+            <div class="service-detail-grid reverse">
+                <div class="service-header">
+                    <div class="service-icon-large">
+                        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="22" cy="22" r="17"/>
+                            <path d="M22 12v10l6 4"/>
+                            <path d="M12 7l3 3M32 7l-3 3M7 22h3M34 22h3"/>
+                        </svg>
+                    </div>
+                    <span class="section-label">Service 04</span>
+                    <h2>AI Delivery Governance</h2>
+                    <p>Governance oversight for organisations using AI tools in their delivery operations — ensuring AI is applied intelligently, documented properly, and controlled responsibly. This is not AI engineering. It is <strong>experienced delivery governance applied to how AI is used in practice.</strong></p>
+                    <p>As AI tooling becomes standard across portfolio companies and financial services teams, the gap between teams using it and teams governing its use is widening. This service closes that gap — with controls, documentation, and accountability frameworks that hold up to board and investor scrutiny.</p>
+                    <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="service-cta">Discuss This Service →</a>
+                </div>
+                <div>
+                    <div class="deliverables-card">
+                        <h3>What is included</h3>
+                        <ul class="deliverable-list">
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>AI tooling audit — mapping what tools are in use, where, and by whom across the organisation or portfolio</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Controls and oversight framework — defining accountability for AI-generated outputs before they reach stakeholders</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Documentation standards — ensuring AI use is logged, traceable, and auditable</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Reporting automation governance — consistency of AI-generated reports across teams without adding headcount</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Human-in-the-loop design — identifying where expert validation is non-negotiable and building it into the workflow</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Board and investor-ready AI governance summary — clear, non-technical visibility on how AI is being used and governed</li>
+                            <li><span class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>AI governance playbook — a practical reference for delivery teams on responsible AI use in day-to-day operations</li>
+                        </ul>
+                    </div>
+                    <div class="suitable-for">
+                        <h4>Best suited for</h4>
+                        <p>Private equity funds and portfolio companies where AI tools are being adopted across teams without consistent governance — and where board-level visibility, investor scrutiny, or regulatory exposure means that responsible AI use needs to be documented and defensible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-header">
+                <span class="section-label">At a Glance</span>
+                <h2>Choosing the right service.</h2>
+                <p>All four services can be engaged independently or in combination. Many clients begin with Governance Advisory and progress to ongoing AI-Augmented Delivery Governance.</p>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>What is needed</th>
+                        <th>AI-Augmented Delivery Governance</th>
+                        <th>Implementation Management</th>
+                        <th>Governance Advisory</th>
+                        <th>AI Delivery Governance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Automated status reporting</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td>Framework only</td>
+                        <td>Governance &amp; controls</td>
+                    </tr>
+                    <tr>
+                        <td>Stakeholder communication management</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td>Plan &amp; templates</td>
+                        <td><span class="dash">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>Full delivery ownership (paper to go-live)</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                    </tr>
+                    <tr>
+                        <td>AI tooling audit &amp; controls framework</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Board / investor AI governance reporting</td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="dash">—</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>RACI and accountability structure</td>
+                        <td>Included in setup</td>
+                        <td>Included in setup</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Regulatory compliance tracking (FCA/BaFin)</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td>Advisory</td>
+                        <td>Advisory</td>
+                    </tr>
+                    <tr>
+                        <td>Ongoing / retainer basis</td>
+                        <td><span class="tick">✓</span></td>
+                        <td>Project duration</td>
+                        <td>Fixed engagement</td>
+                        <td>Fixed or retainer</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Not sure which service fits best?</h2>
+            <p>Book a free 30-minute discovery call. The right starting point will become clear through a short conversation about the project and where governance currently stands.</p>
+            <a href="https://calendly.com/mirnagomaa10/30min" target="_blank" class="btn-primary">Schedule a Conversation →</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>MService X Ltd</h4>
+                    <p>AI-Augmented Delivery Governance for Fintech, Banking &amp; PE.</p>
+                    <p style="margin-top:1rem">Project chaos eliminated. Stakeholder updates automated. Delivery assured across UK &amp; German markets.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="https://calendly.com/mirnagomaa10/30min" target="_blank">Book a Call</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <p><strong>Mirna Gomaa</strong></p>
+                        <p>30 Churchill Place<br>London E14 5RE</p>
+                        <a href="/cdn-cgi/l/email-protection#e980878f86a9849a8c9b9f808a8c9a91c78a8684"><span class="__cf_email__" data-cfemail="9ef7f0f8f1def3edfbece8f7fdfbede6b0fdf1f3">[email&#160;protected]</span></a>
+                        <a href="tel:+447770155786">+44 (0) 7770 155786</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MService X Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const menuToggle=document.getElementById('menuToggle');
+        const navMenu=document.getElementById('navMenu');
+        menuToggle.addEventListener('click',()=>navMenu.classList.toggle('active'));
+        window.addEventListener('scroll',()=>{
+            const navbar=document.getElementById('navbar');
+            if(window.scrollY>50){navbar.classList.add('scrolled')}else{navbar.cl
